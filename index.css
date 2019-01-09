@@ -47,7 +47,7 @@ section.info {
 }
 
 /** Cats photos */
-input[type='radio'] {
+input[type='radio'], input#sort, input[name="cat_rate-val"] {
     display: none;
 }
 
@@ -164,10 +164,6 @@ img {
 }
 
 
-input#sort {
-	display: none;
-	
-}
 
 label[for='sort'] {
 	font-weight: 400;
@@ -180,16 +176,55 @@ label[for='sort'] {
 label[for='sort']::before {
 	content: '';
 	float: right;
-	-webkit-appearance: checkbox;
+	border: 1px solid grey;
+    border-radius: 2px;
 	height: 20px;
 	width: 20px;
-	margin-left: 5px;
+	margin: 0 5px 0 5px;
+
+    position: relative;
+    background:   #f2f2f2;
+
 }
 
-input#sort:checked ~ label::before {
-	background: linear-gradient(to bottom, #d1e9fc, #80c1f7);
+input#sort:checked + label::before {
+	background: linear-gradient(to bottom, #e7f3fd, #6fb9f6);
+}
+
+input#sort:checked + label::after {
+    content: "";
+    position: absolute;
+        transform: translate(30%, -25%) rotate(-0.125turn);
+
+    border-left: 3px solid black;
+    border-bottom: 3px solid black;
+    height: 10px;
+    width: 20px;
+}
+
+
+input#sort:checked ~ input[name='cat_rate-val'][value='10'] + .rating-bar_container {
+    order: 3;
 
 }
+
+input#sort:checked ~ input[name='cat_rate-val'][value='7'] + .rating-bar_container {
+    order: 4;
+
+}
+
+input#sort:checked ~ input[name='cat_rate-val'][value='6'] + .rating-bar_container {
+    order: 5;
+
+}
+
+input#sort:checked ~ input[name='cat_rate-val'][value='3'] + .rating-bar_container {
+    order: 6;
+
+}
+
+
+
 
 
 p.cat_info {
@@ -214,12 +249,12 @@ div.photo_card:hover p.cat_info {
 }
 
 .rating_bar {
-	width: 100px;
+	
 	height: 20px;
 	margin-left: 10px; 
 	border: 1px solid #bfbfbf;
 	display: inline-block;
-	background-image: linear-gradient(to right, #00e64d, white);
+	
 }
 
 span.cat_rate {
@@ -230,12 +265,69 @@ span.cat_rate {
 }
 
 
-span.cat_rate[id='10'] ~ .rating_bar {
-	width: 150px;
-	color: green;
-
-}
-
 .rating p {
 	margin-left: 10px;
 }
+
+input[value='10'] + .rating-bar_container .rating_bar,
+input[value='9'] + .rating-bar_container .rating_bar {
+    background-image: linear-gradient(to right, #00e64d, white);   
+}
+
+input[value='8'] + .rating-bar_container .rating_bar,
+input[value='7'] + .rating-bar_container .rating_bar,
+input[value='6'] + .rating-bar_container .rating_bar,
+input[value='5'] + .rating-bar_container .rating_bar,
+input[value='4'] + .rating-bar_container .rating_bar {
+    background-image: linear-gradient(to right, #ffff4d, white);
+}
+
+input[value='3'] + .rating-bar_container .rating_bar,
+input[value='2'] + .rating-bar_container .rating_bar,
+input[value='1'] + .rating-bar_container .rating_bar{
+    background-image: linear-gradient(to right, #ff3333, white);
+}
+
+
+
+input[value='0'] + .rating-bar_container .rating_bar{
+    background-color: white;
+    width: 100px;
+}
+
+input[value='10'] + .rating-bar_container .rating_bar {
+    width: 150px;
+}
+input[value='9'] + .rating-bar_container .rating_bar {
+    width: 135px;
+}
+input[value='8'] + .rating-bar_container .rating_bar {
+    width: 120px;
+}
+input[value='7'] + .rating-bar_container .rating_bar {
+    width: 105px;
+}
+input[value='6'] + .rating-bar_container .rating_bar {
+    width: 90px;
+}
+input[value='5'] + .rating-bar_container .rating_bar{
+    width: 75px;
+}
+input[value='4'] + .rating-bar_container .rating_bar {
+    width: 60px;
+}
+
+input[value='3'] + .rating-bar_container .rating_bar {
+    width: 45px;
+}
+input[value='2'] + .rating-bar_container .rating_bar {
+    width: 30px;
+}
+input[value='1'] + .rating-bar_container .rating_bar {
+    width: 15px;
+}
+
+
+
+
+
